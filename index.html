@@ -3,152 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>심플 계산기 - 테마 모드</title>
-    <style>
-        :root {
-            /* 다크 모드 (기본) */
-            --bg-color: #f4f4f9;
-            --calc-bg: #333;
-            --display-bg: #eee;
-            --display-text: #333;
-            --btn-bg: #555;
-            --btn-text: white;
-            --btn-hover: #777;
-            --op-bg: #f39c12;
-            --op-hover: #e67e22;
-            --eq-bg: #27ae60;
-            --eq-hover: #2ecc71;
-            --clr-bg: #c0392b;
-            --clr-hover: #e74c3c;
-            --theme-btn-bg: #fff;
-            --theme-btn-text: #333;
-        }
-
-        [data-theme="light"] {
-            /* 화이트 모드 */
-            --bg-color: #e0e0e0;
-            --calc-bg: #ffffff;
-            --display-bg: #f0f0f0;
-            --display-text: #222;
-            --btn-bg: #e0e0e0;
-            --btn-text: #333;
-            --btn-hover: #d0d0d0;
-            --op-bg: #ff9f0a;
-            --op-hover: #ffb340;
-            --eq-bg: #34c759;
-            --eq-hover: #4cd964;
-            --clr-bg: #ff3b30;
-            --clr-hover: #ff5e57;
-            --theme-btn-bg: #333;
-            --theme-btn-text: #fff;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: var(--bg-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background-color 0.3s;
-        }
-
-        .theme-toggle {
-            margin-bottom: 20px;
-        }
-
-        .theme-toggle button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
-            border-radius: 20px;
-            background-color: var(--theme-btn-bg);
-            color: var(--theme-btn-text);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-
-        .calculator {
-            background-color: var(--calc-bg);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            width: 350px;
-            transition: background-color 0.3s;
-        }
-
-        #display {
-            width: 100%;
-            height: 70px;
-            font-size: 2.5rem;
-            text-align: right;
-            margin-bottom: 20px;
-            padding: 10px;
-            box-sizing: border-box;
-            border: none;
-            border-radius: 8px;
-            background-color: var(--display-bg);
-            color: var(--display-text);
-            transition: all 0.3s;
-        }
-
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-        }
-
-        button.calc-btn {
-            padding: 20px;
-            font-size: 1.3rem;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.2s;
-            background-color: var(--btn-bg);
-            color: var(--btn-text);
-        }
-
-        button.calc-btn:hover {
-            background-color: var(--btn-hover);
-            transform: translateY(-2px);
-        }
-
-        button.calc-btn:active {
-            transform: translateY(0);
-        }
-
-        .operator {
-            background-color: var(--op-bg) !important;
-        }
-
-        .operator:hover {
-            background-color: var(--op-hover) !important;
-        }
-
-        .equal {
-            background-color: var(--eq-bg) !important;
-            grid-column: span 2;
-        }
-
-        .equal:hover {
-            background-color: var(--eq-hover) !important;
-        }
-
-        .clear {
-            background-color: var(--clr-bg) !important;
-            grid-column: span 2;
-        }
-
-        .clear:hover {
-            background-color: var(--clr-hover) !important;
-        }
-    </style>
+    <title>아주아주 평범한 계산기</title>
+    <link rel="stylesheet" href="sytel.css">
 </head>
 <body>
+
+<h1 style="margin: 0 0 16px; font-size: 1.2rem; color: #888; font-weight: normal; letter-spacing: 0.05em;">아주아주 평범한 계산기</h1>
 
 <div class="theme-toggle">
     <button id="theme-btn" onclick="toggleTheme()">화이트 모드로 전환</button>
@@ -158,87 +18,34 @@
     <input type="text" id="display" disabled value="0">
     <div class="buttons">
         <button class="calc-btn clear" onclick="clearDisplay()">C</button>
-        <button class="calc-btn operator" onclick="appendToDisplay('/')">/</button>
-        <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
-        
+        <button class="calc-btn operator" onclick="appendToDisplay('÷')">÷</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('×')">×</button>
+
         <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
         <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
         <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
         <button class="calc-btn operator" onclick="appendToDisplay('-')">-</button>
-        
+
         <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
         <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
         <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
         <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
-        
+
         <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
         <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
         <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
         <button class="calc-btn equal" onclick="calculate()">=</button>
-        
+
         <button class="calc-btn" onclick="appendToDisplay('0')" style="grid-column: span 2;">0</button>
         <button class="calc-btn" onclick="appendToDisplay('.')">.</button>
+        <button class="calc-btn backspace" onclick="backspace()">⌫</button>
     </div>
 </div>
 
-<script>
-    const display = document.getElementById('display');
-    const themeBtn = document.getElementById('theme-btn');
-    let currentTheme = 'dark';
+<div id="easter-overlay" style="display:none; position:fixed; inset:0; background:#000; z-index:9999; justify-content:center; align-items:center;">
+    <iframe id="easter-frame" style="width:100vw; height:100vh; border:none;" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+</div>
 
-    function toggleTheme() {
-        if (currentTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'light');
-            themeBtn.innerText = "다크 모드로 전환";
-            currentTheme = 'light';
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-            themeBtn.innerText = "화이트 모드로 전환";
-            currentTheme = 'dark';
-        }
-    }
-
-    function updateFontSize() {
-        const length = display.value.length;
-        if (length > 16) {
-            display.style.fontSize = "1.2rem";
-        } else if (length > 12) {
-            display.style.fontSize = "1.6rem";
-        } else if (length > 8) {
-            display.style.fontSize = "2.0rem";
-        } else {
-            display.style.fontSize = "2.5rem";
-        }
-    }
-
-    function appendToDisplay(input) {
-        if (display.value === "0" && !isNaN(input)) {
-            display.value = input;
-        } else {
-            display.value += input;
-        }
-        updateFontSize();
-    }
-
-    function clearDisplay() {
-        display.value = "0";
-        updateFontSize();
-    }
-
-    function calculate() {
-        try {
-            let result = eval(display.value);
-            if (!Number.isInteger(result)) {
-                result = Number(result.toFixed(8));
-            }
-            display.value = result;
-            updateFontSize();
-        } catch (error) {
-            display.value = "Error";
-            setTimeout(clearDisplay, 1500);
-        }
-    }
-</script>
-
+<script src="main.js"></script>
 </body>
 </html>
